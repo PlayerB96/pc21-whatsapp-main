@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  nodeapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ln1_whatsapp_main-nodeapp
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+      - /app/node_modules           # evita sobrescribir node_modules
+      - whatsapp_auth_data:/app/.wwebjs_auth  # persiste la sesión
+    environment:
+      - PORT=3001
+    restart: always
+
+volumes:
+  whatsapp_auth_data:
