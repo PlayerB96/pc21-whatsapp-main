@@ -18,7 +18,7 @@ router.use(validationMiddleware.sanitizeInput);
  */
 router.post(
   "/lead",
-  validationMiddleware.rateLimit(5),
+  // validationMiddleware.rateLimit(5),
   validationMiddleware.validateRequiredFields(["phone", "message"]),
   whatsappController.sendLeadMessage.bind(whatsappController)
 );
